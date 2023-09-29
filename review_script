@@ -1,0 +1,15 @@
+<script>
+  window.renderOptIn = function() {
+    window.gapi.load('surveyoptin', function() {
+      window.gapi.surveyoptin.render(
+        {
+          // REQUIRED FIELDS
+          "merchant_id": 620518580,
+          "order_id": "{{ order.order_number }}",
+          "email": "{{ checkout.email }}",
+          "delivery_country": "{{ shipping_address.country_code }}",
+          "estimated_delivery_date": "{{ order.created_at | date: "%s" | plus : 604800 | date: "%Y-%m-%d" | uri_encode | replace:"+","%20"}}",
+        });
+    });
+  }
+</script>
